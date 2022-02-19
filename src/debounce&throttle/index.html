@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>debounce</title>
+  </head>
+  <body>
+    <button id="button">click me</button>
+    <script src="./debounce.js"></script>
+    <script src="./throttle.js"></script>
+    <script>
+      window.addEventListener("resize", () => {
+        console.log("resize [without] debounce");
+      });
+      window.addEventListener(
+        "resize",
+        debounce(() => {
+          console.log("resize [with] debounce!");
+        }, 2000)
+      );
+
+      const button = document.querySelector("#button");
+      let times = 0;
+      const throttledFn = throttle(() => {
+        alert(`you clicked button ${times} times in last 2s`);
+        times = 0;
+      }, 2000);
+      button.addEventListener("click", () => {
+        times++;
+        throttledFn();
+      });
+    </script>
+  </body>
+</html>
