@@ -1,6 +1,6 @@
 /**
  * 先从头判断符合递减的有哪些，在从后判断符合递增的有哪些
- * 注意点就是
+ * 注意点就是 time 为 0 或者security连time*2+1都不到的情况
  * @param {number[]} security
  * @param {number} time
  * @return {number[]}
